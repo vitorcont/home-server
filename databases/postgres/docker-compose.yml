@@ -1,0 +1,12 @@
+services:
+  postgres:
+    build: .
+    image: postgres-home
+    restart: unless-stopped
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=${{ secrets.MY_SECRET }}
+    volumes:
+      - /home/databases/postgresql:/var/lib/postgresql/data
